@@ -1,0 +1,50 @@
+{
+  "name": "creative-cult",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShotiQQQ/house-of-sites.git"
+  },
+  "author": "ShotiQ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShotiQQQ/house-of-sites/issues"
+  },
+  "homepage": "https://github.com/ShotiQQQ/house-of-sites#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-loader": "^8.2.5",
+    "browser-sync": "^2.27.10",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-image": "^5.1.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg-sprite": "^2.0.0",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttftowoff2": "^1.0.1",
+    "gulp-uglify-es": "^3.0.0",
+    "normalize": "^0.3.1",
+    "normalize.css": "^8.0.1",
+    "sass": "^1.55.0",
+    "yargs": "^17.6.0"
+  },
+  "dependencies": {
+    "just-validate": "^3.8.1"
+  }
+}
