@@ -10,16 +10,3 @@
   background-color: transparent;
   cursor: pointer;
 }
-
-@mixin button($color, $background, $padding) {
-  @extend %btn-reset;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  padding: $padding;
-  color: $color;
-  background: $background;
-  text-align: center;
-  border-radius: 6px;
-  transition: background-color .3s, color .3s, border-color .3s;
-}

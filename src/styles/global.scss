@@ -3,18 +3,19 @@
 @import "_mixins.scss";
 
 @font-face {
-  font-family: 'Gilroy';
-  src: local("Gilroy-ExtraBold"),
-    url("../fonts/Gilroy-ExtraBold.woff2") format("woff2"),
-    url("../fonts/Gilroy-ExtraBold.woff") format("woff");
+  font-family: 'OpenSans';
+  src: local("OpenSans-Regular"),
+    url("../fonts/OpenSans-Regular.woff2") format("woff2"),
+    url("../fonts/OpenSans-Regular.woff") format("woff");
   font-style: normal;
   font-display: swap;
-  font-weight: 800;
+  font-weight: 400;
 }
 
 body {
-  font-family: 'Gilroy', sans-serif;
+  font-family: 'OpenSans', sans-serif;
   margin: 0;
+  background-color: $background;
 }
 
 html {
@@ -46,13 +47,17 @@ img {
   display: block;
 }
 
+button {
+  @extend %btn-reset;
+}
+
 ul {
   @extend %list-reset;
 }
 
 .container {
   position: relative;
-  max-width: 1150px;
+  max-width: 1256px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
