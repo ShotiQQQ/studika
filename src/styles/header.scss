@@ -218,4 +218,121 @@
             }
         }
     }
+    &__cities {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        background: $whiteBackground;
+        height: 416px;
+        max-height: 0;
+        width: 384px;
+        box-shadow: 0px 7px 38px rgba(44, 62, 106, 0.25);
+        border-radius: 10px;
+        transition: max-height .7s, opacity .7s;
+        margin-top: 20px;
+        opacity: 0;
+        overflow: hidden;
+        &-active {
+            max-height: 416px;
+            opacity: 1;
+        }
+        &-container {
+            width: 100%;
+            padding: 24px 16px 0 16px;
+        }
+        &-input {
+            width: 100%;
+            border: 1px solid $border;
+            background-color: transparent;
+            border-radius: 100px;
+            padding: 14px 25px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: $icons;
+        }
+        &-list {
+            display: flex;
+            flex-direction: column;
+            max-height: 280px;
+            width: 100%;
+            padding-top: 8px;
+            overflow-y: auto;
+            direction: ltr;
+            scrollbar-color: #d4aa70 #e4e4e4;
+            scrollbar-width: thin;
+            &::-webkit-scrollbar {
+                width: 10px;
+                }
+                &::-webkit-scrollbar-track {
+                background-color: #e4e4e4;
+                border-radius: 100px;
+                }
+                
+                &::-webkit-scrollbar-thumb {
+                border-radius: 100px;
+                border: 6px solid rgba(0, 0, 0, 0.18);
+                border-left: 0;
+                border-right: 0;
+                background-color: $actions;
+                }
+            &--container {
+                width: 100%;
+                padding-top: 8px;
+                padding-right: 8px;
+            }
+        }
+        &-item {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            color: $main;
+            cursor: pointer;
+            padding: 9px 0 9px 23px;
+            &--active {
+                background-color: $background;
+            }
+            &:hover {
+                background-color: $background;
+            }
+        }
+        &-save {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 16px 145px;
+            color: $icons;
+            border-top: 1px solid $border;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: $whiteBackground;
+            transition: background-color .5s, color .5s;
+            &--active {
+                background-color: $actions;
+                color: $backgroundHeader;
+            }
+        }
+    }
+    
+    .preloader {
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    vertical-align: -0.125em;
+    border: 0.2em solid $actions;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: 1s linear infinite preloader;
+    animation: 1s linear infinite preloader;
+    }
+
+    @keyframes preloader {
+        100% {
+          transform: rotate(360deg);
+        }
+    }
 }

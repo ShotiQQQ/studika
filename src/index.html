@@ -20,9 +20,22 @@
                 <a class="header__logo" href="index.html">
                     <img src="./img/logo.svg" alt="Логотип">
                 </a>
-                <div class="header__geo">
-                    <img class="header__geo-icon" src="./img/geo.svg" alt="Геолокация">
-                    <button class="header__city">Москва</button>
+                <div class="header__geolocation">
+                    <button class="header__geo">
+                        <img class="header__geo-icon" src="./img/geo.svg" alt="Геолокация">
+                        Любой регион
+                    </button>
+                    <div class="header__cities">
+                        <div class="header__cities-container">
+                            <input class="header__cities-input" type="text" placeholder="Регион, город, населенный пункт">
+                            <div class="header__cities-checked"></div>
+                            <div class="preloader"></div>
+                        </div>
+                        <div class="header__cities-list--container">
+                            <ul class="header__cities-list"></ul>
+                        </div>
+                        <button class="header__cities-save" disabled="disabled">сохранить</button>
+                    </div>
                 </div>
                 <div class="header__search">
                     <img class="header__search-icon" src="./img/search.svg" alt="Поиск">
@@ -90,10 +103,10 @@
                 <span class="header__burger-line header__burger-line--2"></span>
             </button>
             <div class="header__top-mobile">
-                <div class="header__geo-mobile">
+                <button class="header__geo-mobile">
                     <img class="header__geo-icon" src="./img/geo.svg" alt="Геолокация">
-                    <button class="header__city">Москва</button>
-                </div>
+                    Любой регион
+                </button>
                 <div class="header__search-mobile">
                     <img class="header__search-icon" src="./img/search.svg" alt="Поиск">
                     <input class="header__input" type="text" placeholder="Учебное заведение, специальность или профессия">
