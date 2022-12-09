@@ -3,8 +3,10 @@ const citiesInput = document.querySelector('.header__cities-input');
 const citiesList = document.querySelector('.header__cities-list');
 const citiesItems = [];
 let updatedItems = [];
+let checkedItems = [];
 const preloader = document.querySelector('.preloader');
 const citiesSave = document.querySelector('.header__cities-save');
+const citiesChecked = document.querySelector('.header__cities-checked');
 
 async function getCities() {
     const resp = await fetch('https://studika.ru/api/areas', {
@@ -36,7 +38,7 @@ function hasCity() {
     clearUpdatedItems();
     if (citiesInput.value) {
         citiesItems.forEach((e) => {
-            if (e.toLowerCase().includes(citiesInput.value)) {
+            if (e.toLowerCase().includes(citiesInput.value.toLowerCase())) {
                 updatedItems.push(e);
             }
         })
@@ -82,8 +84,8 @@ function stopTimeout() {
 
 function startListenerItems() {
     document.querySelectorAll('.header__cities-item').forEach((e) => {
-        e.addEventListener('click', (e) => {
-            e.target.classList.toggle('header__cities-item--active');
+        e.addEventListener('click', (event) => {
+            event.target.classList.toggle('header__cities-item--active');
             if (document.querySelector('.header__cities-item--active') && !document.querySelector('.header__cities-save--active')) {
                 citiesSave.classList.add('header__cities-save--active');
                 citiesSave.removeAttribute('disabled');
@@ -91,8 +93,39 @@ function startListenerItems() {
                 citiesSave.classList.remove('header__cities-save--active');
                 citiesSave.setAttribute('disabled', 'disabled');
             }
+            document.querySelectorAll('.header__cities-item--checked').forEach((j) => {
+                if (j.textContent.toLowerCase() === event.target.textContent.toLowerCase()) {
+                    j.remove();
+                }
+            })
         })
     })
+    addToChecked();
+}
+
+function addToChecked() {
+    document.querySelectorAll('.header__cities-item').forEach((e) => {
+        e.addEventListener('click', (e) => {
+            document.querySelectorAll('.header__cities-item--active').forEach((event) => {
+                if (event.textContent.toLowerCase() === e.target.textContent.toLowerCase()) {
+                    const checkedItem = document.createElement('li');
+                    checkedItem.classList.add('header__cities-item');
+                    checkedItem.classList.add('header__cities-item--checked');
+                    checkedItem.textContent = e.target.textContent;
+                    checkedItems.push(checkedItem.textContent);
+                    citiesChecked.append(checkedItem);
+                    checkedItem.addEventListener('click', (event) => {
+                        document.querySelectorAll('.header__cities-item').forEach((e) => {
+                            if (checkedItem.textContent.toLowerCase() === e.textContent.toLowerCase()) {
+                                e.classList.remove('header__cities-item--active');
+                            }
+                        })
+                        event.target.remove();
+                    })
+                }
+            })
+        })
+    })    
 }
 
 cities.addEventListener('input', stopTimeout);

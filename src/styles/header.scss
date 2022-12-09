@@ -17,9 +17,7 @@
             margin-right: 0;
         }
     }
-    &__geo {
-        display: flex;
-        align-items: center;
+    &__geolocation {
         margin-right: 61px;
         @media (max-width: 1024px) {
             margin-right: 32px;
@@ -27,8 +25,32 @@
         @media (max-width: 885px) {
             display: none;
         }
+    }
+    &__geo {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 170px;
+        svg {
+            flex-shrink: 0;
+        }
+        &:hover {
+            svg {
+                rect {
+                    stroke: $gray;
+                }
+                path {
+                    fill: $gray;
+                }
+            }
+        }
         &-icon {
             margin-right: 8px;
+        }
+        &-text {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
     &__city {
@@ -45,6 +67,9 @@
         border-radius: 100px;
         padding: 13px 8px 13px 16px;
         margin-right: auto;
+        @media (max-width: 1070px) {
+            margin-right: 8px;
+        }
         @media (max-width: 885px) {
             display: none;
         }
@@ -134,15 +159,6 @@
             &:not(:last-child) {
                 margin-bottom: 5px;
             }
-            &--1 {
-
-            }
-            &--2 {
-
-            }
-            &--3 {
-
-            }
         }
     }
     &__mobile {
@@ -224,17 +240,17 @@
         align-items: flex-start;
         position: absolute;
         background: $whiteBackground;
+        margin-top: 20px;
         height: 416px;
         max-height: 0;
         width: 384px;
         box-shadow: 0px 7px 38px rgba(44, 62, 106, 0.25);
         border-radius: 10px;
         transition: max-height .7s, opacity .7s;
-        margin-top: 20px;
         opacity: 0;
         overflow: hidden;
         &-active {
-            max-height: 416px;
+            max-height: 100vh;
             opacity: 1;
         }
         &-container {
@@ -243,7 +259,8 @@
         }
         &-input {
             width: 100%;
-            border: 1px solid $border;
+            border: 0;
+            outline: 1px solid $border;
             background-color: transparent;
             border-radius: 100px;
             padding: 14px 25px;
@@ -251,11 +268,23 @@
             font-size: 14px;
             line-height: 22px;
             color: $icons;
+            &:focus-visible {
+                outline: 2px solid $active;
+            }
+        }
+        &-checked {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-content: space-between;
+            border-bottom: 1px solid #D8D8D8;
+            padding-bottom: 16px;
+            padding-top: 16px;
         }
         &-list {
             display: flex;
             flex-direction: column;
-            max-height: 280px;
+            max-height: 247px;
             width: 100%;
             padding-top: 8px;
             overflow-y: auto;
@@ -295,6 +324,17 @@
             }
             &:hover {
                 background-color: $background;
+            }
+            &--checked {
+                text-align: center;
+                border: 1px solid #D8D8D8;
+                border-radius: 100px;
+                background-color: $actions;
+                color: $backgroundHeader;
+                padding: 8px 16px;
+                &:hover {
+                    background-color: $gray;
+                }
             }
         }
         &-save {
