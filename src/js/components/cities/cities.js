@@ -7,6 +7,7 @@ let checkedItems = [];
 const preloader = document.querySelector('.preloader');
 const citiesSave = document.querySelector('.header__cities-save');
 const citiesChecked = document.querySelector('.header__cities-checked');
+const clearInput = document.querySelector('.header__cities-clear');
 
 async function getCities() {
     const resp = await fetch('https://studika.ru/api/areas', {
@@ -59,6 +60,21 @@ function hasCity() {
             citiesList.append(oldItem);
         });
         startListenerItems();
+    }
+}
+
+function clearingInput() {
+    citiesInput.value = '';
+    clearInput.classList.remove('header__cities-clear--active');
+    hasCity();
+}
+
+function showOrHideClearInput() {
+    console.log(citiesInput.value.length)
+    if (citiesInput.value.length > 0) {
+        clearInput.classList.add('header__cities-clear--active');
+    } else {
+        clearInput.classList.remove('header__cities-clear--active');
     }
 }
 
@@ -121,6 +137,10 @@ function addToChecked() {
                             }
                         })
                         event.target.remove();
+                        if (!document.querySelector('.header__cities-item--checked')) {
+                            citiesSave.classList.remove('header__cities-save--active');
+                            citiesSave.setAttribute('disabled', 'disabled');
+                        }
                     })
                 }
             })
@@ -128,5 +148,24 @@ function addToChecked() {
     })    
 }
 
-cities.addEventListener('input', stopTimeout);
-cities.addEventListener('input', startTimeout);
+async function sendAPI() {
+    const resp = await fetch('https://studika.ru/api/areas', {
+        method: 'POST',
+        body: JSON.stringify(updatedItems),
+        headers: {
+            Authorization: '',
+            'Content-type': 'application/json',
+        }
+    });
+    const answer = await resp.json();
+    return answer;
+}
+
+function sendCookie() {
+    document.cookie = `cities=${updatedItems}`;
+}
+
+clearInput.addEventListener('click', clearingInput);
+citiesInput.addEventListener('input', showOrHideClearInput);
+citiesInput.addEventListener('input', stopTimeout);
+citiesInput.addEventListener('input', startTimeout);
